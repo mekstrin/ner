@@ -6,10 +6,10 @@ run-api:
 run-ui:
 	uv run streamlit run frontend/app.py
 
-db-up:
+infra-up:
 	docker-compose up -d
 
-db-down:
+infra-down:
 	docker-compose down
 
 init-db:

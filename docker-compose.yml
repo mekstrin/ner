@@ -12,5 +12,23 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+  ollama-init:
+    image: ollama/ollama:latest
+    depends_on:
+      - ollama
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - LLM_MODEL=${LLM_MODEL:-gemma3:1b}
+    entrypoint: /bin/sh
+    command: -c "while ! ollama list >/dev/null 2>&1; do sleep 1; done; echo 'Pulling model...'; ollama pull $${LLM_MODEL}; echo 'Done!'"
+
 volumes:
   postgres_data:
+  ollama_data:

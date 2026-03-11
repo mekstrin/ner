@@ -26,8 +26,7 @@ graph TD
 
 - Python >= 3.10
 - Утилита `uv` для управления зависимостями и окружениями
-- Docker и Docker Compose (для развертывания БД)
-- Установленный сервер Ollama с загруженной моделью (по умолчанию `gemma3:1b`)
+- Docker и Docker Compose (для развертывания БД и Ollama)
 
 ## Настройка
 
@@ -45,7 +44,7 @@ LLM_MODEL=gemma3:1b
 
 1. **Поднятие базы данных (PostgreSQL):**
    ```bash
-   make db-up
+   make infra-up
    ```
 
 2. **Инициализация базы данных (создание таблиц):**
@@ -68,7 +67,7 @@ LLM_MODEL=gemma3:1b
 
 5. **Остановка базы данных:**
    ```bash
-   make db-down
+   make infra-down
    ```
 
 ## Как пользоваться сервисом
