@@ -132,7 +132,7 @@ def get_entity_overview(
         return None
 
     if generate_explanation and not entity.explanation:
-        context = entity.documents[0].content if entity.documents else None
+        context = "\n".join([d.content for d in entity.documents][:5]) if entity.documents else None  # Ограничиваем контекст первыми 5 документами
         explanation = llm_service.get_explanation(entity.text, context=context)
         entity.explanation = explanation
         db.commit()
