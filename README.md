@@ -1,4 +1,4 @@
-# NERT: NER Knowledge Application
+# NER Knowledge Application
 
 Сервис для извлечения именованных сущностей (NER - Named Entity Recognition) из текста без предварительного обучения (Zero-Shot), а также для автоматической генерации описания этих сущностей с использованием LLM и поддержания базы знаний.
 
